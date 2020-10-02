@@ -11,7 +11,7 @@ def binary_search(arr, target, start, end):
     if target == arr[middle]:
         return middle
     
-# move toward base case
+# move toward base case / make recursive call
     if target < arr[middle]:
         # target is in first half of list, so eliminate
         # second half of list and search again
