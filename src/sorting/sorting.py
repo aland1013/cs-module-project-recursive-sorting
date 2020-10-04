@@ -41,6 +41,7 @@ def merge_in_place(arr, start, mid, end):
     if arr[mid] <= arr[start2]:
         return
     
+    # arr is not sorted
     while start <= mid and start2 <= end:
         # check first element
         if arr[start] <= arr[start2]:
