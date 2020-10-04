@@ -35,8 +35,41 @@ def merge_sort(arr):
 # or data structures; it can only re-use the memory it was given as input
 def merge_in_place(arr, start, mid, end):
     # Your code here
-    pass
+    start2 = mid + 1
+    
+    # arr is already sorted
+    if arr[mid] <= arr[start2]:
+        return
+    
+    while start <= mid and start2 <= end:
+        # check first element
+        if arr[start] <= arr[start2]:
+            start += 1
+        else:
+            value = arr[start2]
+            i = start2
+            
+            # shift elements to right by 1
+            while i != start:
+                arr[i] = arr[i - 1]
+                i -= 1
+            
+            arr[start] = value
+            
+            # update pointers
+            start += 1
+            mid += 1
+            start2 += 1
 
 def merge_sort_in_place(arr, l, r):
     # Your code here
-    pass
+    if l < r:
+        
+        # avoid overflow
+        m = l + (r - l) // 2
+        
+        #sort first and second halves
+        merge_sort_in_place(arr, l, m)
+        merge_sort_in_place(arr, m + 1, r)
+        
+        merge_in_place(arr, l, m, r)
